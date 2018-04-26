@@ -1,0 +1,60 @@
+/*
+* author:
+* time: 2018-4-26
+*/
+.weui-tab{
+    position: relative;;
+   height: 100%;
+}
+.weui-tabbar{
+    position: absolute;
+    z-index: 500;
+    bottom: 0;
+    width: 100%;
+    background-color: #f7f7f7f7;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+.weui-tabbar_item{
+    display: block;
+    -webkit-box-flex: 1;
+    flex: 1;/*一比一划分*/
+    padding: 50px 0 0;
+    color: #808080;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+.tabbar .page_bd{
+    height: 100%;
+    padding: 0;
+  
+}
+/* 为什么tabber border要有伪元素去做？box-sizing border 要占大小  44px   */
+.weui-tabbar:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #C0BFC4;
+  }
+  
+.weui-tabbar_icon{
+    /* 既不会向block那样，把兄弟元素挤下去
+    又不会想inline 元素一样设置不了宽高
+    设置宽高并且不挤元素 */
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+}
+.weui-tabbar_label{
+  line-height: 1.8;
+  font-size: 10px;
+  color: #808080;
+  text-align: center;
+}
+.weui-bar_item_on .weui-tabbar_label{
+    color: #09bb07;
+}

@@ -1,0 +1,72 @@
+/*
+* author:作者
+* data: 2020-4-5
+*/
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    /* 浏览器的内核 */
+    /* 在移动端基本都是-webkit针对不同的内核使用样式做兼容 */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+body,html{
+    height: 100%;
+    /* 手机不同厂商，做自己的一些体验，这是有损统一体验的，
+    css希望所有的手机都一样，一张白纸，将厂商的欲望抹平 css reset 
+    -webkit-tap-highlight-color  transparent不规范的属性按上去的高度就透明，去掉这种属性 */
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+}
+/* -apple-system-font,苹果字体 */
+body{
+    line-height: 1.6;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica, sans-serif;
+}
+a{
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.page,body{
+    background: #f8f8f8;
+}
+/* 页面框架 */
+.container{
+    overflow: hidden;
+}
+/* 移动端单页 */
+.container,.page{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.page{
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /*将滚动感知touch，体验更好超*/
+    z-index: 1;
+
+}
+.page_hd{
+    padding: 40px;
+}
+.page_title{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+}
+.page_desc{
+    margin-top: 5px;
+    color: #888888;
+    text-align: left;
+    font-size: 14px;
+
+}
+.page_bd{
+    padding: 0 15px;
+}
