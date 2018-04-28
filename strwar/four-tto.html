@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>加载动画</title>
+    <style>
+*{
+    margin: 0;
+    padding: 0;
+}
+.loading{
+    background: aqua;
+    width: 300px;
+    height: 100px;
+  
+    position: absolute;
+    top: 300px;
+    left: 200px;
+    /* display: flex;  */
+}
+
+.loading .demo{
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background: red;
+    margin-left:5px; 
+    margin-top:32px;
+    animation: updowm 1s ease-out infinite;
+}
+.loading .demo:nth-child(1){
+    animation-delay: 0s;
+}
+.loading .demo:nth-child(2){
+    animation-delay: 0.15s;
+}
+.loading .demo:nth-child(3){
+    animation-delay: 0.3s;
+}
+.loading .demo:nth-child(4){
+    animation-delay: 0.45s;
+}
+.loading .demo:nth-child(5){
+    animation-delay: 0.6s;
+}
+@keyframes updowm{
+    0% ,60%,100%{
+        /* transform: translateY(0); */
+        transform: scale(1);
+        opacity: 1;
+}
+    30%{
+        transform: scale(2.5);
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+    </div>
+</body>
+</html>
