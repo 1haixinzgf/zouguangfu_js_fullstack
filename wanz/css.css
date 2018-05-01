@@ -1,0 +1,145 @@
+body {
+  font-size: 20px;
+}
+body,
+div {
+  margin: 0;
+  padding: 0;
+  background: #ffef5e;
+}
+.border {
+  border: 1px solid #152131;
+}
+.main {
+  position: relative;
+  width: 700px;
+  margin: 50px auto;
+}
+.wanzi {
+  position: absolute;
+  top: 250px;
+  left: 100px;
+  z-index: 10;
+}
+.wanzi .hairs {
+  background: #152131;
+  width: 190px;
+  height: 250px;
+  left: -30px;
+  top: -50px;
+  position: absolute;
+  border-radius: 50% 50% 0 0;
+  overflow: hidden;
+}
+.wanzi .hairs:after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  background: #ffef0e;
+  top: 120px;
+}
+.wanzi .hairs .hair {
+  width: 35px;
+  height: 45px;
+  background: #152131;
+  position: absolute;
+  z-index: 1;
+  transform: rotate(70deg) scale(1) skew(44deg) translate(8px);
+}
+.wanzi .hairs .hair.hair1 {
+  top: 17px;
+  left: 27px;
+}
+.wanzi .hairs .hair.hair2 {
+  top: 8px;
+  left: 52px;
+}
+.wanzi .hairs .hair.hair3 {
+  top: 4px;
+  left: 73px;
+}
+.wanzi .hairs .hair.hair4 {
+  top: 0;
+  left: 90px;
+}
+.wanzi .hairs .hair.hair5 {
+  top: 4px;
+  left: 108px;
+}
+.wanzi .hairs .hair.hair6 {
+  top: 8p;
+  left: 125px;
+}
+.wanzi .hairs .hair.hair7 {
+  top: 17px;
+  right: 17px;
+}
+.wanzi .face {
+  background: #fbdac7;
+  width: 130px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  border-radius: 20px 20px 50px 50px;
+}
+.wanzi .face：after {
+  content: '';
+  width: 140px;
+  height: 10px;
+  background: #fbdac7;
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  margin-left: -7px;
+}
+.wanzi .face .brow {
+  width: 42px;
+  height: 10px;
+  background: #152131;
+  position: absolute;
+  top: 26px;
+  border-radius: 50%;
+}
+.wanzi .face.left-brow {
+  left: 18px;
+  transform: rotate(-10deg);
+}
+.wanzi .face.right-brow {
+  left: 14px;
+  transform: rotate(10deg);
+}
+.wanzi .face .eye {
+  width: 8px;
+  height: 8px;
+  background: #000;
+  position: absolute;
+  top: 40px;
+  border-radius: 50%;
+  z-index: 2;
+}
+.wanzi .face .eye.left-eye {
+  left: 32%;
+}
+.wanzi .face .eye.right-eye {
+  right: 32%;
+}
+.wanzi .face .mounth {
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  background: #d96b6e;
+  position: absolute;
+  top: 50px;
+  left: 150px;
+  border-radius: 50%;
+}
+.wanzi .face .mounth:after {
+  content: '';
+  width: 60px;
+  height: 30px;
+  background: #fbdac7;
+  top: -10px;
+  left: -20px;
+  border-radius: 30%;
+}
