@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML5 创建表单</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script></script>
+</head>
+
+<body>
+    <!-- html5API阻止了一些错误  让提交体验更细腻
+    input各种 type 适合各种类型的数据
+    text email number password  tel
+    自动去阻止表单提交，
+    IE不支持 html5能力 IE9+才指出
+    打理表单-->
+    <div class="cantainer">
+        <form name="loginForm">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="text" name="email"  autocomplete="off" class="form-control" id="exampleInputEmail1" placeholder="Email" >
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <div class="row">
+            <ul id="emails"></ul>
+            
+        </div>
+    </div>
+    <script>
+        // 作用域问题scope 
+    // (function(){
+    //     var a=10;
+    //     window.a=10;
+    // })()
+
+
+     var globaVariable=(function(){
+        // 局部变量
+        // var a =10;
+        // var b =2;
+        // var c=5;//私有变量
+        // return{
+        //     a,
+        //     b
+        // }
+
+        const oForm=document.forms['loginForm'];
+        const arrEmail=[];
+        
+        loadEmail();
+        // 
+        oForm.addEventListener('submit',(event)=>{
+            event.preventDefault();
+            // console.log(this);
+            // 通道
+            // js 查找变量查找的方式
+            // 1.在本作用域内查找
+            // 2.如果1找不到，就去父级作用域
+            // 3.尽头是window
+            const oEmail=oForm.email;
+            const strEmail=oEmail.value.trim();
+            if(!strEmail){
+                alert('请输入邮箱');
+                return;
+            }
+            //验证邮箱格式 正则
+            // 验证文本是否符合规则的机制 正则表达式
+            // @前后两部分 .com .cn 
+            // test true false 是否合格
+            // match（分组） 得到数组，正则查找功能
+            // +匹配一次或者多次 
+            // ？匹配0次或者多次
+            const reg=/^([a-zA-z0-9_-])+@([a-zA-Z0-9—_])+(.[a-zA-Z0-9-_])+/
+            if (!reg.test(strEmail)){
+                alert('邮箱格式有误');
+                return;
+            }
+            
+            // 显示到页面上
+            addEmail(strEmail);
+            saveEmail(strEmail);
+            oForm.reset();
+           
+
+            // const oEmail=this.email;
+            // const oEmail=document.getElementById('exampleInputEmail');
+            // console.log(oEmail);
+            // this 会多变？ 就是this定不下来，他跟函数的指向方式有关
+            // 如果是普通函数，在作为事件的回调函数事件内部 this 会指向事件发生的元素
+            
+            // 在箭头函数里，在执行时this跟父级作用域一致
+            //性能最快 ID索引
+            // ie9以下input type email => text 
+            //及利用html5的内置提醒
+        },false);
+            // 变量查找像冒泡
+        function addEmail(email){
+            const strHTML=` <li> ${email} </li>`
+            document.querySelector('#emails').innerHTML += strHTML;
+        }
+        function loadEmail(){
+            //从何加载
+            //setItem 设置key =>value
+            const email =localStorage.getItem('email');
+            addEmail(email);
+        }
+        function saveEmail(email){
+            // 本地存储
+            // key value
+            // 存的不只是字符串 多个
+            // 数组对象不可存 totring
+            const strEmail=localStorage.getItem('email');
+            if (strEmail){//indexOf检查字符串中含有某个字符，没有返回-1   email.indexOf(',')>-1
+                strEmail +=`,${strEmail}`
+            }
+                else{
+                    strEmail=email;
+                    // addEmail(email);
+                }
+            
+            localStorage.setItem('email',strEmail);
+        }
+        function loadEmail(){
+            // 从何加载
+            // setItem 设置 key=>value
+            const email = localStorage.getItem('email');
+            addEmail(email);
+        }
+    })()
+        // 全局变量 window 顶级
+        // document  文档
+    // console.log(globaVariable.a);
+    </script>
+</body>
+</body>
+
+</html>
