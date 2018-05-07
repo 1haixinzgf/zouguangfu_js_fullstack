@@ -1,0 +1,34 @@
+bg_color = #12ef56
+box_size = 100px
+
+// 能不能只写标准属性 前缀帮忙生成 mixin混合
+// border-radius 这些兼容性都得写
+
+wendor(prop,args)
+    -webkit-{prop} args
+    -moz-{prop} args
+    {prop} args
+    -ms-{prop} args
+
+border-radius()
+    wendor("border-radius",arguments)
+    wendor("box-shadow",arguments)
+
+// border-radius(n)
+//     border-radius n
+//     -webkit-border-radius n
+//     -moz-border-radius n
+
+// box-shadow(n)
+//     -webkit-box-shadow n
+//     -moz-box-shadow n 
+//     -ms-box-shadow n
+//     box-shadow n
+
+.box
+    background bg_color
+    width box_size
+    height box_size
+    border-radius (5px)
+    box-shadow (1px 1px 10px rgba(0,0,0,.5))
+   
