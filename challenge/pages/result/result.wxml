@@ -1,0 +1,87 @@
+<view class="container">
+<view>
+  <view class="position-command">
+    <view class="command-title">
+      <view class="title-hd">
+        <text>{{currentDesc.job}}</text>
+      </view>
+      <view class="title-bd">
+        <text class="title-salary">{{currentDesc.salary}}</text>/
+        <text>{{currentDesc.city}}</text>/
+        <text>{{currentDesc.experience}}</text>/
+        <text>{{currentDesc.education}}</text>
+      </view>
+      <view class="title-ft">
+        <text>职业诱惑：</text>
+        <text>{{currentDesc.entice}}</text>
+      </view>
+    </view>
+    <view class="command-company">
+      <view class="company-left">
+        <view class="left-area">
+          <text>{{currentDesc.company}}</text>
+        </view>
+        <view class="left-other">
+          <text>{{currentDesc.other}}</text>
+        </view>
+      </view>
+      <view class="company-right">
+        <image src="{{currentDesc.image}}" class="right-pic" />
+      </view>
+    </view>
+  </view>
+  <view class="position-desc">
+    <view class="desc-title">
+      <text>职位描述</text>
+    </view>
+    <view class="desc-rule">
+      <view class="rule-item" wx:for="{{currentDesc.demand}}" wx:key="index" wx:for-item="demand">{{demand}}</view>
+      <!-- <view class="rule-item">用户体验</view>
+      <view class="rule-item">产品经理</view> -->
+    </view>
+    <view class="desc-content">
+      <view class="content-title">岗位职责：</view>
+      <text class="list1" wx:for="{{currentDesc.offer}}" wx:key="index" wx:for-item="offer">{{index+1}}、{{offer}}</text>
+      
+    </view>
+    <view class="position-pub">
+      <text>职位发布者</text>
+      <view class="pub-img">
+        <image src="{{currentDesc.touxiang}}" class="pub-pic" />
+      </view>
+      <text>{{currentDesc.bossname}}</text>
+    </view>
+  </view>
+  <view class="area">
+    <view class="desc-title">工作地址</view>
+    <view class="job-area">
+      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image src="../../images/area.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view><view class="company-area">
+        <view class="weui-cell__bd">{{currentDesc.area}}</view>
+        <view class="weui-cell__bd">{{currentDesc.part}}</view></view>
+        <view class="weui-cell__ft weui-cell__ft_in-access nav"></view>
+      </navigator>
+    </view>
+  </view>
+  </view>
+  <view class="collection">
+    <view class="coll-share " bindtap="sharePosition">
+      <view class="coll-share-img">
+        <image src="../../images/share.png" class="coll-share-pic" />
+      </view>
+      <view>分享</view>
+    </view>
+    <view class="coll-share" bindtap="collectionPosition" >
+      <view class="coll-share-img">
+        <image src="../../images/tabbar3.png" class="coll-share-pic" hidden="{{!isHidden}}"/>
+        <image src="../../images/collection2.png" class="coll-share-pic" hidden="{{isHidden}}"/>
+      </view>
+      <view>收藏</view>
+    </view>
+    <view>
+      <button class="coll-btn">投递简历</button>
+    </view>
+  </view>
+</view>
