@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .container {
+        min-width: 500px;
+    }
+    .left {
+        background:  pink;
+        float: left;
+        width: 180px;
+        height: 20px;
+    }
+    .right {
+        background: lightblue;
+        width: 180px;
+        float: right;
+        height: 20px;
+
+    }
+    .center {
+        background: yellow;
+        overflow: hidden;  /* *** */
+        height: 20px;
+
+    }
+    </style>
+</head>
+<body>
+    <!-- 三栏式布局 -->
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center"></div>
+    </div>
+</body>
+</html>
