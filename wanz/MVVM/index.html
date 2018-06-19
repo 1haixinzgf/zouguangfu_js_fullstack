@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Vue 的本质MVVM
+    data-binding 
+    template compile(编译) -->
+    <!-- 手写一个vue支持对{{}}的解析, 模板编译 template compile
+    tempile -> html
+    {{key}}  key在data里面  {name: '海心'} 回填
+    1 打坑  2 填值
+    正则识别在替换{{}} -->
+    <div id="app">
+        <h3>姓名</h3>
+        <p>ass{{name}}</p>
+        <h3>年龄</h3>
+        <p>{{age}}</p>
+        <div class="msg">
+            <p>{{msg}}</p>
+        </div>
+    </div>
+    <script>
+        class Vue {
+            constructor(opt) {//opt 配置项  外界通过json的格式传进来
+                this.opt = opt;
+                this.root = document.querySelector(this.opt.el);
+                this.compile(this.root); 
+                
+            }
+            compile(node) { 
+                // {{.*}} 匹配里面所有的
+                // 遍历节点, 找到文本节点,文本节点用{{}}包裹
+                // console.log(node.childNodes);
+                [].forEach.call(node.childNodes, child => {
+                    // console.log(child)
+                    // console.log(child.innerHTML)
+                    // 只有{{}}才需要去放入数据， 正则
+                    // firstElementChild  子节点下有没有孙节点，第一个子节点
+                    // console.log(child.firstElementChild)
+                    if(!child.firstElementChild && /\{\{(.*)\}\}/.test(child.innerHTML)) {
+                        console.log(RegExp.$1)//RegExp找到最近的一次匹配
+                        // child.innerHTML = this.opt.data.name
+                        let key = RegExp.$1.trim();
+                       child.innerHTML = child.innerHTML.replace(/\{\{(.*)\}\}/,this.opt.data[key]);//json 里面的变量名要用[]来表达,而不能.key
+                    }else if(child.firstElementChild) {
+                        this.compile(child);//节点递归  树状节点用递归
+                    }
+                })
+            }
+        }
+        document.addEventListener('DOMContentLoaded',function() {
+            let options = {
+                el: '#app',//el 根节点
+                data: {
+                    name: '检索中...',
+                    age: 30,
+                    msg: 'vue 高手，月薪五万',   
+                }
+            }
+            // 快一点
+            new Vue(options)
+        })
+        
+    </script>
+</body>
+</html>
